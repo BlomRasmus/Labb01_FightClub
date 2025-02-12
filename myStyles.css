@@ -1,0 +1,41 @@
+
+#homeButtons{
+    background-color: wheat;
+}
+
+#paragraphHome{
+    background-color: wheat;
+}
+#headerContainer{
+    background-color: wheat;
+}
+#footerOwner{
+    font-style: italic;
+}
+#aboutPar{
+    width: 100%;
+}
+#aboutContainer{
+    padding-top: 4%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+#contactColumn{
+    border-radius: 25px;
+    background-color: purple;
+    margin-left: 5px;
+}
+.contactInfo{
+    color: yellow;
+}
+#adressMap{
+    border-radius: 25px;
+    border-color: beige;
+    margin-left: 5px;
+}
+#map{
+    border-radius: 25px;
+}
+#logo{
+    border-radius: 25px;
+}
