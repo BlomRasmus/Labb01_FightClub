@@ -33,7 +33,29 @@ const classes = [
 
 ]
 
-let cardGroup = document.getElementById("testGroup");
+const gear = [
+    new Product(
+        "Boxningshandskar",
+        699,
+        "https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",        
+        "Boxningshandskar 14 oz. Tillverkad i Thailand.",
+        "BoxingGloves Image"
+    ),
+    new Product(
+        "Gi",
+        1000,
+        "https://images.unsplash.com/photo-1677170202297-a9de1d9e72bf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",        "Boxningshandskar 14 oz. Tillverkad i Thailand.",
+        "Gi image"
+    ),
+    new Product(
+        "Hand Wraps",
+        150,
+        "https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",        "Boxningshandskar 14 oz. Tillverkad i Thailand.",
+        "Hand Wraps Image"
+    )
+]
+
+let cardGroup = document.getElementById("classesGroup");
 
 for (let index = 0; index < classes.length; index++) {
     
@@ -59,28 +81,7 @@ for (let index = 0; index < classes.length; index++) {
                             </button>
                             <button type="button" id="addButton${classes[index].name}" class="btn btn-dark">Add To Cart</button>
                     </div>`
-    
-    // let cardTitle = document.createElement("h5");
-    // cardTitle.className = "card-title";
-    // cardTitle.innerText = classes[index].name;
-    
-    // let cardText = document.createElement("p");
-    // cardText.className = "card-text";
-    // cardText.innerText = classes[index].price + "kr/termin";
-    
-    // let modalButton = document.createElement("button");
-    // modalButton.className = "btn btn-primary";
-    // modalButton.innerText = "Show More"
-    // modalButton.setAttribute("data-toggle", "modal")
-    
-    
-    // let addButton = document.createElement("button");
-    // addButton.className = "btn btn-dark";
-    // addButton.innerText = "Add To Cart";
-    // addButton.setAttribute("data-toggle", "modal");
-    // addButton.id = `addButton${products[index].name}`;
-    
-    
+
     cardGroup.appendChild(newCard);
 
     newCard.appendChild(image);
@@ -89,8 +90,41 @@ for (let index = 0; index < classes.length; index++) {
     // cardBody.appendChild(modalButton);
     // cardBody.appendChild(addButton);
 
-    newCard.appendChild(cardBody);
+    newCard.appendChild(cardBody);   
+}
+
+let gearCardGroup = document.getElementById("gearGroup");
+
+for (let index = 0; index < classes.length; index++) {
     
+    let newCard = document.createElement("div");
+    newCard.className = "card border-start-0 border-bottom-gray border-end-gray border-top-0 bg-transparent pt-3 pb-3";
+    newCard.style.width = "18rem";
+    newCard.style.height = "35rem";
+    
+    let image = document.createElement("img");
+    image.className = "card-img-top";
+    image.src = gear[index].imageURL;
+    image.style.height = "60%";
+    image.style.objectFit = "cover";
+    
+    let cardBody = document.createElement("div");
+    cardBody.className = "card-body";
+    cardBody.innerHTML = 
+                    `<h5 class="card-title">${gear[index].name}</h5>
+                    <p class="card-text">Pris: ${gear[index].price } kr</p>
+                    <div class="mt-auto">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judoModal">
+                                Show more
+                            </button>
+                            <button type="button" id="addButton${gear[index].name}" class="btn btn-dark">Add To Cart</button>
+                    </div>`
+
+    gearCardGroup.appendChild(newCard);
+
+    newCard.appendChild(image);
+
+    newCard.appendChild(cardBody);   
 }
 
 let judoButton = document.getElementById("addButtonJudo");
@@ -99,4 +133,19 @@ judoButton.addEventListener("click", () => (
     console.log("Test")
 ))
 
+
+let closeSideNav = document.getElementById("closeSideNav");
+closeSideNav.addEventListener("click", closeSideBar);
+
+let shoppingCartButton = document.getElementById("shoppingCartButton");
+shoppingCartButton.addEventListener("click", openSideBar);
+
+function openSideBar(){
+    document.getElementById("mySideNav").style.width = "250px";
+    document.getElementById("mainDiv").style.marginRight = "250px"
+}
+function closeSideBar(){
+    document.getElementById("mySideNav").style.width = "0px";
+    document.getElementById("mainDiv").style.marginRights = "0px";
+}
 

@@ -42,3 +42,17 @@
 .klasserHeader{
     font-weight: bold;
 }
+
+#mySideNav{
+    position: fixed;
+    height: 100%;
+    width: 0%;
+    background-color: black;
+    transition: 0.5s;
+    top: 0;
+    right: 0;
+    z-index: 10;
+}
+#mainDiv{
+    transition: 0.5s;
+}
