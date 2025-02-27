@@ -48,7 +48,7 @@ const gear = [
         "Gi image"
     ),
     new Product(
-        "Hand Wraps",
+        "HandWraps",
         150,
         "https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",        "Boxningshandskar 14 oz. Tillverkad i Thailand.",
         "Hand Wraps Image"
@@ -85,10 +85,6 @@ for (let index = 0; index < classes.length; index++) {
     cardGroup.appendChild(newCard);
 
     newCard.appendChild(image);
-    // cardBody.appendChild(cardTitle);
-    // cardBody.appendChild(cardText);
-    // cardBody.appendChild(modalButton);
-    // cardBody.appendChild(addButton);
 
     newCard.appendChild(cardBody);   
 }
@@ -127,11 +123,101 @@ for (let index = 0; index < classes.length; index++) {
     newCard.appendChild(cardBody);   
 }
 
-let judoButton = document.getElementById("addButtonJudo");
 
-judoButton.addEventListener("click", () => (
-    console.log("Test")
-))
+
+let totalPrice = 0;
+
+let addJudoButton = document.getElementById("addButtonJudo");
+let addboxingButton = document.getElementById("addButtonBoxning");
+let addMMAButton = document.getElementById("addButtonMMA");
+
+addJudoButton.addEventListener("click", addJudo);
+addboxingButton.addEventListener("click", addBoxing);
+addMMAButton.addEventListener("click", addMMA);
+
+function addJudo(){
+    addClass(0)
+    addJudoButton.disabled = true;
+    totalPrice += classes[0].price;
+}
+function addBoxing(){
+    addClass(1)
+    addboxingButton.disabled = true;
+    totalPrice += classes[1].price;
+}
+function addMMA(){
+    addClass(2)
+    addMMAButton.disabled = true;
+    totalPrice += classes[2].price;
+}
+
+let checkout = document.getElementById("shoppingCartItems")
+
+function addClass(index){
+    let classItem = document.createElement("li");
+    classItem.className = "list-group-item";
+    classItem.innerHTML = `<div class="d-flex align-items-center">
+              <img src=${classes[index].imageURL}
+                alt="${classes[index].name} image"
+                width="50"
+                height="50"
+                class="me-3">
+              <div>
+                <p class="mb-0 fw-bold">${classes[index].name}</p>
+                <p class="mb-0 text-muted">${classes[index].price} kr</p>           
+              </div>
+              <div>
+                <button class="btn btn-danger ms-4" aria-label="remove from cart" id="removeButton${classes[index].name}"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>`;
+        
+    checkout.appendChild(classItem);
+}
+
+let addGlovesButton = document.getElementById("addButtonBoxningshandskar");
+let addGiButton = document.getElementById("addButtonGi");
+let addHandWrapsButton = document.getElementById("addButtonHandWraps");
+
+addGlovesButton.addEventListener("click", addGloves);
+addGiButton.addEventListener("click", addBoxing);
+addHandWrapsButton.addEventListener("click", addHandWraps);
+
+function addGloves(){
+    addGear(0)
+    addGlovesButton.disabled = true;
+    totalPrice += gear[0].price;
+}
+function addGi(){
+    addGear(1)
+    addGiButton.disabled = true;
+    totalPrice += gear[1].price;
+}
+function addHandWraps(){
+    addGear(2)
+    addHandWrapsButton.disabled = true;
+    totalPrice += gear[2].price;
+}
+
+function addGear(index){
+    let gearItem = document.createElement("li");
+    gearItem.className = "list-group-item";
+    gearItem.innerHTML = `<div class="d-flex align-items-center">
+              <img src=${gear[index].imageURL}
+                alt="${gear[index].name} image"
+                width="50"
+                height="50"
+                class="me-3">
+              <div>
+                <p class="mb-0 fw-bold">${gear[index].name}</p>
+                <p class="mb-0 text-muted">${gear[index].price} kr</p>           
+              </div>
+              <div>
+                <button class="btn btn-danger ms-4" aria-label="remove from cart" id="removeButton${gear[index].name}"><i class="bi bi-trash"></i></button>
+              </div>
+            </div>`;
+        
+    checkout.appendChild(gearItem);
+}
 
 
 let closeSideNav = document.getElementById("closeSideNav");
@@ -143,9 +229,11 @@ shoppingCartButton.addEventListener("click", openSideBar);
 function openSideBar(){
     document.getElementById("mySideNav").style.width = "250px";
     document.getElementById("mainDiv").style.marginRight = "250px"
+    document.getElementById("checkoutDiv").style.width = "225px";
 }
 function closeSideBar(){
     document.getElementById("mySideNav").style.width = "0px";
-    document.getElementById("mainDiv").style.marginRights = "0px";
+    document.getElementById("mainDiv").style.marginRight = "0px";
+    document.getElementById("checkoutDiv").style.width = "0px";
 }
 

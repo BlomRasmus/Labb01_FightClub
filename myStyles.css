@@ -47,7 +47,7 @@
     position: fixed;
     height: 100%;
     width: 0%;
-    background-color: black;
+    background-color: dimgrey;
     transition: 0.5s;
     top: 0;
     right: 0;
@@ -55,4 +55,11 @@
 }
 #mainDiv{
     transition: 0.5s;
+}
+#shoppingCartTitle{
+    color: rgb(255, 218, 172);
+    font-weight: bold;
+}
+#checkoutDiv{
+    width: 0;
 }

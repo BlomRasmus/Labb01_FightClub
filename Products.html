@@ -36,17 +36,17 @@
     </div>
   </div>
   
-  <div id="mainDiv">
-    <div class="container-fluid border-top border-bottom border-gray" id="homeButtons">
-      <div class="row justify-content-between align-items-center p-2">
-        <div class="col d-flex justify-content-center align-items-stretch">
-          <a class="btn btn-dark" id="homeButton" href="Index.html" role="button">Home</a>
-          <a class="btn btn-dark" id="omButton" href="About.html" role="button">Om oss</a>
-          <a class="btn btn-dark" id="sortimentButton" href="Products.html" role="button">Sortiment</a>
-        </div>
+  <div class="container-fluid border-top border-bottom border-gray" id="homeButtons">
+    <div class="row justify-content-between align-items-center p-2">
+      <div class="col d-flex justify-content-center align-items-stretch">
+        <a class="btn btn-dark" id="homeButton" href="Index.html" role="button">Home</a>
+        <a class="btn btn-dark" id="omButton" href="About.html" role="button">Om oss</a>
+        <a class="btn btn-dark" id="sortimentButton" href="Products.html" role="button">Sortiment</a>
       </div>
     </div>
-    
+  </div>
+  
+  <div id="mainDiv">
     <div class="container-fluid">
       <div class="row mt-4 border-bottom-gray">
         <h1 class="klasserHeader">Klasser</h1>
@@ -71,56 +71,36 @@
     </div>
   </div>
     
-    <div id="mySideNav">
-        <button id="closeSideNav" type="button" class="btn btn-dark" aria-label="closeButton"><i class="bi bi-x-lg"></i></button>
+    <div id="mySideNav" class="d-flex flex-column vh-100">
+      <div class="row">
+        <div class="col">
+          <button id="closeSideNav" type="button" class="btn btn-dark" aria-label="closeButton"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <!-- <div class="col justify-content-start align-items-center justify-self-center align-self-center" style="height: 8px;">
+          <p id="shoppingCartTitle">Items</p>
+        </div> -->
+      </div>
+
+      <div class="card text-center ms-1 me-1 mt-3" style="width: 18rem;">
+        <div class="card-header">
+          Items
+        </div>
+        <ul class="list-group list-group-flush" id="shoppingCartItems">
+
+        </ul>
+      </div>
+
+      <div class="row mt-auto ps-3 pb-2 justify-content-center align-items-center">
+        <div class="col justify-content-center align-items-center">
+          <button class="btn btn-primary" id="checkoutDiv">Proceed to Checkout</button>
+        </div>
+      </div>
     </div>
     
     
+    <script src="Products.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="Products.js"></script>
     
   </body>
   </html>
-
-<!--   
-  <div class="card-group" id="classesGroup">
-      <div class="card border-start-0 border-bottom-gray border-end-gray border-top-0 bg-transparent pt-3 pb-3" style="width: 18rem; height: 35rem;" >
-        <img class="card-img-top" src="https://images.unsplash.com/photo-1564415315949-7a0c4c73aab4?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Judo Img"
-        style="height: 60%; object-fit: cover;">
-        <div class="card-body">
-          <h5 class="card-title">Boxnings handskar</h5>
-          <p class="card-text">Pris: 1500 kr</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judoModal">
-              Show more
-            </button>
-            <button type="button" class="btn btn-dark">Add To Cart</button>
-        </div>
-      </div>
-      <div class="card border-top-0 border-bottom-gray border-start-gray border-end-gray bg-transparent pt-3 pb-3" style="width: 18rem; height: 35rem;" >
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1495555687398-3f50d6e79e1e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Boxing Img"
-          style="height: 60%; object-fit: cover;">
-        <div class="card-body">
-          <h5 class="card-title">Boxning</h5>
-          <p class="card-text">Pris: 2500kr/termin</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judoModal">
-              Show more
-            </button>
-            <button type="button" class="btn btn-dark">Add To Cart</button>
-        </div>
-      </div>
-      <div class="card border-bottom-gray border-start-0 border-top-0 border-end-0 bg-transparent pt-3 pb-3" style="width: 18rem; height: 35rem;" >
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1615117973420-cce962a65005?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="MMA Img"
-          style="height: 60%; object-fit: cover;">
-        <div class="card-body">
-          <h5 class="card-title">MMA</h5>
-          <p class="card-text">Pris: 3000kr/termin</p>
-          <div class="mt-auto">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judoModal">
-                      Show more
-                  </button>
-                  <button type="button" class="btn btn-dark">Add To Cart</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
