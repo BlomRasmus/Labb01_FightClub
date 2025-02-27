@@ -156,6 +156,7 @@ let checkout = document.getElementById("shoppingCartItems")
 function addClass(index){
     let classItem = document.createElement("li");
     classItem.className = "list-group-item";
+    classItem.id=`${classes[index].name}Item`
     classItem.innerHTML = `<div class="d-flex align-items-center">
               <img src=${classes[index].imageURL}
                 alt="${classes[index].name} image"
@@ -167,11 +168,27 @@ function addClass(index){
                 <p class="mb-0 text-muted">${classes[index].price} kr</p>           
               </div>
               <div>
-                <button class="btn btn-danger ms-4" aria-label="remove from cart" id="removeButton${classes[index].name}"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-danger ms-4" onclick="remove${classes[index].name}()" aria-label="remove from cart" id="removeButton${classes[index].name}"><i class="bi bi-trash"></i></button>
               </div>
             </div>`;
         
     checkout.appendChild(classItem);
+}
+
+function removeJudo(){
+    document.getElementById("JudoItem").remove();
+    addJudoButton.disabled = false;
+    totalPrice -= classes[0].price;
+}
+function removeBoxning(){
+    document.getElementById("BoxningItem").remove();
+    addboxingButton.disabled = false
+    totalPrice -= classes[1].price;
+}
+function removeMMA(){
+    document.getElementById("MMAItem").remove();
+    addMMAButton.disabled = false;
+    totalPrice -= classes[2].price;
 }
 
 let addGlovesButton = document.getElementById("addButtonBoxningshandskar");
@@ -179,7 +196,7 @@ let addGiButton = document.getElementById("addButtonGi");
 let addHandWrapsButton = document.getElementById("addButtonHandWraps");
 
 addGlovesButton.addEventListener("click", addGloves);
-addGiButton.addEventListener("click", addBoxing);
+addGiButton.addEventListener("click", addGi);
 addHandWrapsButton.addEventListener("click", addHandWraps);
 
 function addGloves(){
@@ -201,6 +218,7 @@ function addHandWraps(){
 function addGear(index){
     let gearItem = document.createElement("li");
     gearItem.className = "list-group-item";
+    gearItem.id=`${gear[index].name}Item`
     gearItem.innerHTML = `<div class="d-flex align-items-center">
               <img src=${gear[index].imageURL}
                 alt="${gear[index].name} image"
@@ -212,11 +230,27 @@ function addGear(index){
                 <p class="mb-0 text-muted">${gear[index].price} kr</p>           
               </div>
               <div>
-                <button class="btn btn-danger ms-4" aria-label="remove from cart" id="removeButton${gear[index].name}"><i class="bi bi-trash"></i></button>
+                <button class="btn btn-danger ms-4" onclick="remove${gear[index].name}()" aria-label="remove from cart" id="removeButton${gear[index].name}"><i class="bi bi-trash"></i></button>
               </div>
             </div>`;
         
     checkout.appendChild(gearItem);
+}
+
+function removeBoxningshandskar(){
+    document.getElementById("BoxningshandskarItem").remove()
+    addGlovesButton.disabled = false;
+    totalPrice -= gear[0].price;
+}
+function removeGi(){
+    document.getElementById("GiItem").remove();
+    addGiButton.disabled = false;
+    totalPrice -= gear[1].price;
+}
+function removeHandWraps(){
+    document.getElementById("HandWrapsItem").remove();
+    addHandWrapsButton.disabled = false;
+    totalPrice -= gear[2].price;
 }
 
 
@@ -227,8 +261,8 @@ let shoppingCartButton = document.getElementById("shoppingCartButton");
 shoppingCartButton.addEventListener("click", openSideBar);
 
 function openSideBar(){
-    document.getElementById("mySideNav").style.width = "250px";
-    document.getElementById("mainDiv").style.marginRight = "250px"
+    document.getElementById("mySideNav").style.width = "300px";
+    document.getElementById("mainDiv").style.marginRight = "300px"
     document.getElementById("checkoutDiv").style.width = "225px";
 }
 function closeSideBar(){
