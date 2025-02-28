@@ -44,13 +44,15 @@ const gear = [
     new Product(
         "Gi",
         1000,
-        "https://images.unsplash.com/photo-1677170202297-a9de1d9e72bf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",        "Boxningshandskar 14 oz. Tillverkad i Thailand.",
+        "https://images.unsplash.com/photo-1677170202297-a9de1d9e72bf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Keikogi är en kombination av judons och kendons klädsel. Över den vanliga judodräktens vita jacka och byxor knyter man sin svarta hakama, ett byxplagg som är så yvigt att det ser ut som en kjol. Det sistnämnda plagget används inte i judo, däremot i kendo. Kendoutövare bryr sig å andra sidan inte om att ta på några judobyxor under sin hakama.",
         "Gi image"
     ),
     new Product(
         "HandWraps",
         150,
-        "https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",        "Boxningshandskar 14 oz. Tillverkad i Thailand.",
+        "https://images.unsplash.com/photo-1555661530-68c8e98db4e6?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "HandWraps från 100% bomull, tillverkad i Thailand",
         "Hand Wraps Image"
     )
 ]
@@ -58,6 +60,28 @@ const gear = [
 let cardGroup = document.getElementById("classesGroup");
 
 for (let index = 0; index < classes.length; index++) {
+
+    let mainDiv = document.getElementById("mainDiv")
+    let modalDiv = document.createElement("div");
+
+    modalDiv.innerHTML = `
+    <div class="modal fade" id="${classes[index].name}Modal" tabindex="-1" role="dialog" aria-labelledby="${classes[index].name}ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Extra Information ${classes[index].name}</h5>
+            </div>
+            <div class="modal-body">
+                <p>${classes[index].additionalText}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="close${classes[index].name}Modal" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>`
+
+    mainDiv.appendChild(modalDiv);
     
     let newCard = document.createElement("div");
     newCard.className = "card border-start-0 border-bottom-gray border-end-gray border-top-0 bg-transparent pt-3 pb-3";
@@ -76,22 +100,42 @@ for (let index = 0; index < classes.length; index++) {
                     `<h5 class="card-title">${classes[index].name}</h5>
                     <p class="card-text">Pris: ${classes[index].price } kr/termin</p>
                     <div class="mt-auto">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judoModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${classes[index].name}Modal">
                                 Show more
                             </button>
                             <button type="button" id="addButton${classes[index].name}" class="btn btn-dark">Add To Cart</button>
                     </div>`
 
     cardGroup.appendChild(newCard);
-
     newCard.appendChild(image);
-
     newCard.appendChild(cardBody);   
 }
 
 let gearCardGroup = document.getElementById("gearGroup");
 
-for (let index = 0; index < classes.length; index++) {
+for (let index = 0; index < gear.length; index++) {
+
+    let mainDiv = document.getElementById("mainDiv")
+    let modalDiv = document.createElement("div");
+
+    modalDiv.innerHTML = `
+    <div class="modal fade" id="${gear[index].name}Modal" tabindex="-1" role="dialog" aria-labelledby="${gear[index].name}ModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Extra Information ${gear[index].name}</h5>
+            </div>
+            <div class="modal-body">
+                <p>${gear[index].additionalText}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="close${gear[index].name}Modal" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>`
+
+    mainDiv.appendChild(modalDiv);
     
     let newCard = document.createElement("div");
     newCard.className = "card border-start-0 border-bottom-gray border-end-gray border-top-0 bg-transparent pt-3 pb-3";
@@ -110,7 +154,7 @@ for (let index = 0; index < classes.length; index++) {
                     `<h5 class="card-title">${gear[index].name}</h5>
                     <p class="card-text">Pris: ${gear[index].price } kr</p>
                     <div class="mt-auto">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#judoModal">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#${gear[index].name}Modal">
                                 Show more
                             </button>
                             <button type="button" id="addButton${gear[index].name}" class="btn btn-dark">Add To Cart</button>
@@ -191,6 +235,22 @@ function removeMMA(){
     totalPrice -= classes[2].price;
 }
 
+document.getElementById("closeJudoModal").addEventListener("click", ()=>{
+    let judoModal = bootstrap.Modal.getInstance(document.getElementById("JudoModal"));
+    judoModal.hide();
+})
+document.getElementById("closeBoxningModal").addEventListener("click", ()=>{
+    let boxningModal = bootstrap.Modal.getInstance(document.getElementById("BoxningModal"));
+    boxningModal.hide();
+})
+document.getElementById("closeMMAModal").addEventListener("click", ()=>{
+    let mmaModal = bootstrap.Modal.getInstance(document.getElementById("MMAModal"));
+    mmaModal.hide();
+})
+
+
+
+
 let addGlovesButton = document.getElementById("addButtonBoxningshandskar");
 let addGiButton = document.getElementById("addButtonGi");
 let addHandWrapsButton = document.getElementById("addButtonHandWraps");
@@ -252,6 +312,19 @@ function removeHandWraps(){
     addHandWrapsButton.disabled = false;
     totalPrice -= gear[2].price;
 }
+
+document.getElementById("closeBoxningshandskarModal").addEventListener("click", ()=>{
+    let BoxningshandskarModal = bootstrap.Modal.getInstance(document.getElementById("BoxningshandskarModal"));
+    BoxningshandskarModal.hide();
+})
+document.getElementById("closeGiModal").addEventListener("click", ()=>{
+    let GiModal = bootstrap.Modal.getInstance(document.getElementById("GiModal"));
+    GiModal.hide();
+})
+document.getElementById("closeHandWrapsModal").addEventListener("click", ()=>{
+    let HandWrapsModal = bootstrap.Modal.getInstance(document.getElementById("HandWrapsModal"));
+    HandWrapsModal.hide();
+})
 
 
 let closeSideNav = document.getElementById("closeSideNav");
